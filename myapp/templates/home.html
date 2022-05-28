@@ -18,7 +18,12 @@
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="">Notice</a></li>
                 <li><a href="">FAQ</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+                <li><a href="">사용자 : {{ user.username }}</a></li>
+                {% else %}
                 <li><a href="{% url 'login' %}">Login</a></li>
+                {% endif %}
                 <li style="color: white;"></li>
             </ul>
         </nav>
