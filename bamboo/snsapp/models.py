@@ -9,3 +9,11 @@ class Post(models.Model):
     
     def __str__(self):
         return self.title
+    
+class Comment(models.Model): # ORM
+    comment = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
+    post = models.ForeignKey(Post, null=True, blank=True, on_delete=models.CASCADE) # 어느 게시글에 있는 댓글인지 중요하므로 models.ForeignKey를 이용하여 연결
+    
+    def __str__(self):
+        return self.comment
