@@ -5,7 +5,7 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+    <h6 class="m-0 font-weight-bold text-primary">익명게시판</h6>
   </div>
   <div class="card-body">
     <div class="table-responsive">
@@ -27,7 +27,7 @@
             <tr>
               <td><a href="{% url 'detail' post.id %}">{{ post.title }}</a></td> {% comment %} url에서 detail 이라는 곳으로 이동할건데 post.id를 같이 들고 이동함 {% endcomment %}
               <td>{{ post.date }}</td>
-              <td>작성자</td>
+              <td>익명</td>
             </tr>
           {% endfor %}
         </tbody>
@@ -35,11 +35,12 @@
     </div>
   </div>
 </div>
+{% if user.is_authenticated %}
 <a href="{% url 'postcreate' %}" class="btn btn-primary btn-icon-split">
     <span class="icon text-white-50">
         <i class="fas fa-flag"></i>
     </span>
     <span class="text">글쓰기</span>
 </a>
-
+{% endif %}
 {% endblock %}
